@@ -72,7 +72,7 @@ const Header = () => {
             className="md:hidden p-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
           >
             {isOpen ? (
               <XMarkIcon className="h-6 w-6" />

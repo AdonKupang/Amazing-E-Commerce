@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { optimizeImage, generateSrcSet, generateImageSizes } from '../utils/imageLoader';
+import PropTypes from 'prop-types';
 
 interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'sizes'> {
   src: string;
@@ -79,6 +80,20 @@ const Image = ({
       )}
     </div>
   );
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  breakpoints: PropTypes.arrayOf(
+    PropTypes.shape({
+      min: PropTypes.number.isRequired,
+      max: PropTypes.number,
+      width: PropTypes.string.isRequired
+    })
+  ),
+  priority: PropTypes.bool
 };
 
 export default Image; 
