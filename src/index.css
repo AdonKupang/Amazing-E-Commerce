@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #004AAD;
+    --color-secondary: #00A86B;
+    --color-accent: #FFD700;
+    --color-background: #F9FAFC;
+    
+    --header-height: 4rem;
+    --footer-height: auto;
+    
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-padding-top: var(--header-height);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-background text-gray-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Improve focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+
+  /* Remove tap highlight on mobile */
+  @media (hover: none) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-fluid-2 max-w-7xl;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-fluid-2 py-fluid-1 
+           rounded-md font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 
+           focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 
+           focus:ring-secondary-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary-500 text-primary-500 
+           hover:bg-primary-50 focus:ring-primary-500;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md 
+           transition-shadow duration-200 overflow-hidden;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 rounded-md border border-gray-300 
+           bg-white text-gray-900 placeholder-gray-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500 
+           focus:border-transparent transition-colors duration-200;
+  }
+
+  .select {
+    @apply input appearance-none bg-no-repeat bg-right pr-10;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-size: 1.5em 1.5em;
+  }
+}
+
+/* Fluid Typography */
+h1 { @apply text-fluid-4xl font-bold; }
+h2 { @apply text-fluid-3xl font-bold; }
+h3 { @apply text-fluid-2xl font-semibold; }
+h4 { @apply text-fluid-xl font-semibold; }
+h5 { @apply text-fluid-lg font-medium; }
+h6 { @apply text-fluid-base font-medium; }
+p { @apply text-fluid-base; }
+
+/* Remove default styles from index.css that conflict with Tailwind */
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
